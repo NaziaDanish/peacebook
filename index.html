@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile & Business Promotion</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #e3f2fd, #fff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+    .header
+    {
+        background: linear-gradient(to right, #4caf50, #81c784);
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        }
+    .hero {
+      animation: fadeInDown 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .footer
+    {
+      background: linear-gradient(to right, #4caf50, #81c784);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .btn{
+        background: linear-gradient(to right, #4caf50, #81c784);
+        color: white;
+        border: none;
+        transition: background 0.3s;
+    }
+  </style>
+</head>
+<body>
+    <header class="header text-white p-4 mb-4 position-relative">
+        <img src="assets/c.jpg" alt="Logo" width="100" class="position-absolute top-0 start-0 m-3 rounded-circle shadow">
+        <div class="text-center">
+          <h1>Promote Yourself on Peace Book</h1>
+          <p>Show your skills, build your brand</p>
+        </div>
+      </header>
+
+  <section class="container hero">
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card p-4">
+          <h3>Create Your Profile</h3>
+          <input type="text" class="form-control my-2" placeholder="Your Name" id="name">
+          <input type="text" class="form-control my-2" placeholder="Your Skills" id="skills">
+          <textarea class="form-control my-2" placeholder="Describe Your Work" id="description"></textarea>
+          <button class="btn" onclick="generateProfile()">Generate Profile</button>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card p-4 bg-light" id="output">
+          <h4>Your Profile Will Appear Here</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer text-white text-center p-3 mt-5">
+    <p>&copy; 2025 Promote Yourself. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function generateProfile() {
+      const name = document.getElementById('name').value;
+      const skills = document.getElementById('skills').value;
+      const description = document.getElementById('description').value;
+
+      if (!name || !skills || !description) {
+        alert('Please fill out all fields!');
+        return;
+      }
+
+      const output = `
+        <h3>${name}</h3>
+        <p><strong>Skills:</strong> ${skills}</p>
+        <p><strong>About:</strong> ${description}</p>
+        <button class="btn btn-outline-primary mt-3" onclick="shareProfile('${name}')">Share Profile</button>
+      `;
+
+      document.getElementById('output').innerHTML = output;
+    }
+
+    function shareProfile(name) {
+      alert(`${name}'s profile shared successfully!`);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
